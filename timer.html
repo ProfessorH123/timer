@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    <style>
+        body{
+            background: -webkit-linear-gradient(left, #2c3e50,#bdc3c7,#bdc3c7, #2c3e50);
+        }
+        .mydiv{
+            transform: translate(180% , 280%);
+            width: 300px;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .time{
+            width: 50%;
+            font-size: 35px;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 15px;
+            border: 2px solid lightgrey;
+            background: -webkit-linear-gradient(left, #34495e,#7f8c8d,#7f8c8d, #34495e);
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="mydiv">
+
+    </div>
+    <script>
+        setInterval(()=>{
+           let time = document.querySelector(".mydiv");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let AM_PM = "AM";
+           if(hours > 12){
+            AM_PM = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.innerHTML =`<span class="time">${hours}</span>`+`<span class="time">:</span>`+
+           `<span class="time">${minutes}</span>`+`<span class="time">:</span>`+
+           `<span class="time">${seconds}</span>`+`<span class="time">${AM_PM}</span>`;
+         });
+    </script>
+</body>
+</html>
